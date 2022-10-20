@@ -1,4 +1,4 @@
-nativeVlan = 1
+nativeVlan = 100
 dataVlan = 100
 
 if nativeVlan == dataVlan:
