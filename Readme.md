@@ -138,4 +138,32 @@ What is your first name? Kirill
 >>> print("Hello" + firstName + "!")
 Hello Kirill!
 >>> 
-```
+
+# Цикл for
+#Вывести в столбик значение списка
+>>> devices = ["R1", "R2", "S1", "S2"]
+>>> for item in devices:
+...     print(item)
+... 
+R1
+R2
+S1
+S2
+#Проверка, была ли здесь R в этом списке
+>>> for item in devices:
+...     if "R" in item:
+...         print(item)
+... 
+R1
+R2
+#Через точку пишутся методы
+#append означает добавить
+#Главное отступать ровно по 4 раза
+>>> switches = []
+>>> for item in devices:
+...     if "S" in item:
+...         switches.append(item)
+... 
+>>> switches
+['S1', 'S2']
+
