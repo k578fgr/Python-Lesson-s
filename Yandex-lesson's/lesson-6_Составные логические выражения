@@ -17,7 +17,7 @@ print(5 > 3)
 print(not 5 > 3)
 # Будет напечатано: False
 
-wind = True
+wind = not True
 
 # Есть ли ветер?
 if not wind: # Если wind НЕ равен True
@@ -26,3 +26,115 @@ else:
     print('Поднялся ветер')
     print('Серые тучи развеял')
     print('Новые тянутся с юга')
+
+Результат
+
+Поднялся ветер
+Серые тучи развеял
+Новые тянутся с юга
+
+Что будет напечатано, если выполнить этот код?
+
+x = 44
+
+if not x > 40 or x < 45 and x != 42:
+    print("Выражение вернуло True!")
+else:
+    print("Выражение вернуло False!") 
+
+Тоже правильный ответ
+Выражение вернуло True!
+Неправильный ответ
+Выражение вернуло False!
+Нет:
+
+    сперва выполнится оператор not, значит, вместо выражения not x > 40 будет False (ведь x = 44, 44 > 40 == True, а not True == False);
+    потом выполнится оператор and: выражение 44 < 45 and 44 != 42 вернёт True;
+    а потом сработает or: False or True вернёт True
+
+# Передадим в программу данные
+beaufort = 6        # Сильный ветер
+is_raining = False  # Дождя нет
+temperature = 16    # Не жарко
+
+if not is_raining or beaufort <= 4 and temperature > 22:
+    print('Идём гулять, на улице хорошо')
+else:
+    print('Сидим дома, читаем Практикум')
+
+
+ в программу данные
+beaufort = 6  # сильный ветер
+is_raining = False  # дождя нет
+temperature = 16
+
+if (not is_raining or beaufort <= 4) and temperature > 22:
+    print('Идём гулять, на улице хорошо')
+else:
+    print('Сидим дома, читаем Практикум')
+
+
+    not is_raining or beaufort <= 4 → True or False → True
+    (not is_raining or beaufort <= 4) and temperature > 22 → True and False → False
+
+    # Продуктов маловато:
+milk = not True       # Молоко "НЕ есть".
+cereals = True        # Хлопья есть.
+eggs = False          # Яиц нет.
+
+# Вставьте логический оператор вместо многоточия.
+# Решите, нужно ли расставить скобки.
+
+if milk or not cereals or eggs:
+    if eggs:
+        if milk:
+            breakfast = "- омлет"
+        else:
+            breakfast = "- яичница"
+    else:
+        breakfast = "- хлопья с молоком"
+else:
+    if milk:
+        breakfast = "- стакан молока"
+    elif cereals:
+        breakfast = "можно погрызть сухих хлопьев"
+    else:
+        breakfast = "ничего не будет: разгрузочный день"
+
+print("Сегодня на завтрак", breakfast)
+
+Результат
+
+Сегодня на завтрак можно погрызть сухих хлопьев
+
+
+for friends_count in range(0, 21):
+  def print_friends_count(friends_count):
+    if friends_count == 0:
+        print('У тебя нет друзей')
+    elif friends_count == 1:
+        print('У тебя', friends_count, 'друг')
+    elif friends_count >= 2 and friends_count <= 4:
+        print('У тебя', friends_count, 'друга')
+    elif friends_count >= 5 and friends_count < 20:
+        print('У тебя', friends_count, 'друзей')
+    else:
+        print('Ого, сколько у тебя друзей! Целых', friends_count)
+
+
+# Ниже напишите цикл, в котором будет вызываться функция print_friends_count
+# с аргументом от 0 до 20 включительно
+print_friends_count(0)
+print_friends_count(1)
+print_friends_count(2)
+print_friends_count(3)
+print_friends_count(4)
+
+Результат
+У тебя нет друзей
+У тебя 1 друг
+У тебя 2 друга
+У тебя 3 друга
+У тебя 4 друга
+У тебя 5 друзей
+У тебя 6 друзей
