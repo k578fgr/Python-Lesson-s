@@ -1,0 +1,200 @@
+Функцию со склонениями числительных вы уже написали, она добавлена в код. Осталось «прикрутить» её к Анфисе.
+Из функции process_anfisa(), из блока if query == 'сколько у меня друзей?' вызовите функцию format_friends_count() и вставьте возвращаемую этой функцией фразу в f-строку так, чтобы на вопрос 'сколько у меня друзей' функция возвращала грамотный ответ, например, 
+У тебя 9 друзей или У тебя 3 друга.
+
+DATABASE = {
+    'Серёга': 'Омск',
+    'Соня': 'Москва',
+    'Миша': 'Москва',
+    'Дима': 'Челябинск',
+    'Алина': 'Красноярск',
+    'Егор': 'Пермь',
+    'Коля': 'Красноярск'
+}
+
+# Новая функция, она возвращает правильное словосочетание, склоняя слово "друзья" 
+# в зависимости от того, какое число передано в аргументе friends_count
+def format_friends_count(friends_count):
+    if friends_count == 1:
+        return '1 друг'
+    elif 2 <= friends_count <= 4:
+        return f'{friends_count} друга'
+    else:
+        return f'{friends_count} друзей'
+
+
+def process_anfisa(query):
+    if query == 'сколько у меня друзей?':
+        count = len(DATABASE)
+        
+        # Вызовите функцию format_friends_count() и передайте в неё count.
+        # Отредактируйте строку ниже: в ней должно использоваться выражение, 
+        # которое вернёт функция format_friends_count()
+        format_friends_count(count)
+        return f'У тебя {count} друзей.'
+    elif query == 'кто все мои друзья?':
+        friends_string = ', '.join(DATABASE)
+        return f'Твои друзья: {friends_string}'
+    elif query == 'где все мои друзья?':
+        unique_cities = set(DATABASE.values())
+        cities_string = ', '.join(unique_cities)
+        return f'Твои друзья в городах: {cities_string}'
+    else:
+        return '<неизвестный запрос>'
+
+
+print('Привет, я Анфиса!')
+print(process_anfisa('сколько у меня друзей?'))
+print(process_anfisa('кто все мои друзья?'))
+print(process_anfisa('где все мои друзья?'))
+print(process_anfisa('кто виноват?'))
+
+Результат 
+
+Привет, я Анфиса!
+У тебя 7 друзей.
+Твои друзья: Серёга, Соня, Миша, Дима, Алина, Егор, Коля
+Твои друзья в городах: Омск, Красноярск, Пермь, Москва, Челябинск
+<неизвестный запрос>
+кол-во ваших друзей 3
+
+3 друга
+
+Задание 2
+
+DATABASE = {
+    'Серёга': 'Омск',
+    'Соня': 'Москва',
+    'Миша': 'Москва',
+    'Дима': 'Челябинск',
+    'Алина': 'Красноярск',
+    'Егор': 'Пермь',
+    'Коля': 'Красноярск'
+}
+
+# Новая функция, она возвращает правильное словосочетание, склоняя слово "друзья" 
+# в зависимости от того, какое число передано в аргументе friends_count
+def process_query(query):
+    elements = query.split(', ')
+    if elements[0] == 'Анфиса':
+        return process_anfisa(elements[1])
+
+def format_friends_count(friends_count):
+    if friends_count == 1:
+        return '1 друг'
+    elif 2 <= friends_count <= 4:
+        return f'{friends_count} друга'
+    else:
+        return f'{friends_count} друзей'
+
+
+def process_anfisa(query):
+    if query == 'сколько у меня друзей?':
+        count = len(DATABASE)
+
+        # Вызовите функцию format_friends_count() и передайте в неё count.
+        # Отредактируйте строку ниже: в ней должно использоваться выражение, 
+        # которое вернёт функция format_friends_count()
+        format_friends_count(count)
+        return f'У тебя {count} друзей.'
+    elif query == 'кто все мои друзья?':
+        friends_string = ', '.join(DATABASE)
+        return f'Твои друзья: {friends_string}'
+    elif query == 'где все мои друзья?':
+        unique_cities = set(DATABASE.values())
+        cities_string = ', '.join(unique_cities)
+        return f'Твои друзья в городах: {cities_string}'
+    else:
+        return '<неизвестный запрос>'
+
+
+process_query('Анфиса, сколько у меня друзей?')
+process_query('Анфиса, кто все мои друзья?')
+process_query('Анфиса, где все мои друзья?')
+process_query('Анфиса, кто виноват?')
+process_query('Соня, ты где?')
+print('Привет, я Анфиса!')
+print(process_anfisa('сколько у меня друзей?'))
+print(process_anfisa('кто все мои друзья?'))
+print(process_anfisa('где все мои друзья?'))
+print(process_anfisa('кто виноват?'))
+print(process_query('Соня, ты где?'))
+
+Задаие 3
+
+DATABASE = {
+    'Серёга': 'Омск',
+    'Соня': 'Москва',
+    'Миша': 'Москва',
+    'Дима': 'Челябинск',
+    'Алина': 'Красноярск',
+    'Егор': 'Пермь',
+    'Коля': 'Красноярск'
+}
+
+# Новая функция, она возвращает правильное словосочетание, склоняя слово "друзья" 
+# в зависимости от того, какое число передано в аргументе friends_count
+
+def process_friend(name, query):
+    if name in DATABASE:
+      if query == 'ты где?':
+        city = DATABASE[name]
+        return f'{name} в городе, {city}'
+      else:
+            return f'неизвестный запрос'
+    else:
+        return f'У тебя нет друга по имени {name}'
+        
+        
+
+def process_query(name, query):
+    elements = query.split(', ')
+    if elements[0] == 'Анфиса':
+        return process_anfisa(elements[1])
+    else:
+        return process_friend(name, query)
+
+def format_friends_count(friends_count):
+    if friends_count == 1:
+        return '1 друг'
+    elif 2 <= friends_count <= 4:
+        return f'{friends_count} друга'
+    else:
+        return f'{friends_count} друзей'
+
+
+def process_anfisa(query):
+    if query == 'сколько у меня друзей?':
+        count = len(DATABASE)
+
+        # Вызовите функцию format_friends_count() и передайте в неё count.
+        # Отредактируйте строку ниже: в ней должно использоваться выражение, 
+        # которое вернёт функция format_friends_count()
+        format_friends_count(count)
+        return f'У тебя {count} друзей.'
+    elif query == 'кто все мои друзья?':
+        friends_string = ', '.join(DATABASE)
+        return f'Твои друзья: {friends_string}'
+    elif query == 'где все мои друзья?':
+        unique_cities = set(DATABASE.values())
+        cities_string = ', '.join(unique_cities)
+        return f'Твои друзья в городах: {cities_string}'
+    else:
+        return '<неизвестный запрос>'
+
+
+process_query('Анфиса', 'сколько у меня друзей?')
+process_query('Анфиса', 'кто все мои друзья?')
+process_query('Анфиса', 'где все мои друзья?')
+process_query('Анфиса', 'кто виноват?')
+process_query('Соня', 'ты где?')
+process_query('Коля', 'что делать?')
+process_query('Антон', 'ты где?')
+print('Привет, я Анфиса!')
+print(process_anfisa('сколько у меня друзей?'))
+print(process_anfisa('кто все мои друзья?'))
+print(process_anfisa('где все мои друзья?'))
+print(process_anfisa('кто виноват?'))
+print(process_query('Соня', 'ты где?'))
+print(process_query('Коля', 'что делать?'))
+print(process_query('Антон', 'ты где?'))
