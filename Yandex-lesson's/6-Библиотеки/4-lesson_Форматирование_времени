@@ -146,13 +146,15 @@ def process_friend(name, query):
         city = DATABASE[name]
         if query == 'ты где?':
             return f'{name} в городе {city}'
+        if query == 'который час?':
+            if city in UTC_OFFSET:
+                return f'Там сейчас {what_time(city)}'
+            else:
+                return f'<не могу определить время в городе {city}>'
         else:
             return '<неизвестный запрос>'
     else:
         return f'У тебя нет друга по имени {name}'
-    if name in UTC_OFFSET:
-        if query == 'который час?':
-        return f'Там сейчас, {what_time(city)}'
 
 
 def process_query(query):
